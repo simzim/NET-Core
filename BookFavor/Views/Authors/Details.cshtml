@@ -1,0 +1,30 @@
+﻿@model BookFavor.Models.Author
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div>
+    <h4 class="my-5">Author details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id"><img src="~/images/edit.svg" width="30" /><span class="mx-3 text-success font-weight-bold">Edit</span></a> |
+    <a asp-action="Index"><span class="text-primary font-weight-bold">Back to List</span></a>
+</div>

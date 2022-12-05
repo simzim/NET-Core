@@ -1,0 +1,48 @@
+﻿@model BookFavor.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div>
+    <h4 class="my-5">Book details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ToString();
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalPages)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TotalPages) psl.
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Isbn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Isbn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PublishedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PublishedDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Publisher)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Publisher.Name)
+        </dd>
+    </dl>
+</div>
+<div class="my-5">
+    <a asp-action="Edit" asp-route-id="@Model.Id"><img src="~/images/edit.svg" width="30" /><span class="mx-3 text-success font-weight-bold">Edit</span></a> |
+    <a asp-action="Index"><span class="text-primary font-weight-bold">Back to List</span></a>
+</div>

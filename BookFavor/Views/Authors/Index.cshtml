@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BookFavor.Models.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="my-5">Books Authors List</h1>
+
+<p>
+    <a asp-action="Create">
+        <img src="~/images/plus.svg" width="30" />
+        <span class="text-success font-weight-bold mx-3"> Add new Author</span>
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                <a title="edit" asp-action="Edit" asp-route-id="@item.Id"> <img src="~/images/edit.svg" width="30" /></a> |
+                <a title="details" asp-action="Details" asp-route-id="@item.Id"><img src="~/images/details.svg" width="30" /></a> |
+                <a title="delete" asp-action="Delete" asp-route-id="@item.Id"><img src="~/images/delete.svg" height="30" /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

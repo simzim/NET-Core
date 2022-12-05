@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BookFavor.Models.Book>
+
+@{
+    ViewData["Title"] = "All Books";
+}
+
+<h1 class="my-5">All Books</h1>
+
+<p>
+    <a asp-action="Create">
+        <img src="~/images/plus.svg" width="30" />
+        <span class="text-success font-weight-bold mx-3"> Add new book</span>
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Isbn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                Actions
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.ToString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPages) psl.
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Isbn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishedDate, "{yyyy-MM-dd}")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publisher.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    <a title="edit" asp-action="Edit" asp-route-id="@item.Id"> <img src="~/images/edit.svg" width="30" /></a> |
+                    <a title="details" asp-action="Details" asp-route-id="@item.Id"><img src="~/images/details.svg" width="30" /></a> |
+                    <a title="delete" asp-action="Delete" asp-route-id="@item.Id"><img src="~/images/delete.svg" height="30" /></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

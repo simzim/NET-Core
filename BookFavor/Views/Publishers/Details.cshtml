@@ -1,0 +1,83 @@
+﻿@model BookFavor.Models.Publisher
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div>
+    <h4 class="my-5">Publisher</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            Books Count
+        </dt>
+        <dd class="col-sm-10">
+           @Model.Books.Count()
+        </dd>
+
+        <hr />
+
+        <h4 class="my-5">All books of Publisher</h4>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Knygos pavadinimas
+                    </th>
+                    <th>
+                        Puslapių skaičius
+                    </th>
+                    <th>
+                        ISBN
+                    </th>
+                    <th>
+                        Published date
+                    </th>
+             
+                    <th>
+                        Quantity
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @Model.Books)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title) |
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalPages) psl.
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Isbn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PublishedDate, "{yyyy-MM-dd}")
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
